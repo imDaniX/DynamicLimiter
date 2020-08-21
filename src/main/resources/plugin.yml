@@ -1,0 +1,6 @@
+name: DynamicLimiter
+version: ${project.version}
+main: me.imdanix.limiter.DynamicLimiter
+api-version: 1.13
+authors: [imDaniX]
+description: Just to limit mobs on high load

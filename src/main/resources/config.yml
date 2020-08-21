@@ -1,0 +1,27 @@
+scheduler: 600 # Ticks between checks
+
+worlds:
+  # World name (case-sensitive)
+  world:
+    # Changing formula
+    # limit - initial limit for specific mob group
+    # online - current online
+    # wonline - current online in the world
+    # tps - current tps according to paper /tps
+    formula: 'limit * (tps/19.4)^2 - ((1/limit) * (online - 1)^2)'
+    # Minimal limit for the formula
+    # default: 0
+    minimal-limit: 1
+    # Allow limit to be above initial limit
+    # default: false
+    above-default: true
+
+  world_nether:
+    formula: 'limit * (tps/20)^4 - ((1.1/limit) * (online - 1)^2)'
+    minimal-limit: 1
+    above-default: false
+
+  world_the_end:
+    formula: 'limit * (tps/20)^7 - ((1.2/limit) * (online - 1)^2)'
+    minimal-limit: 0
+    above-default: false
