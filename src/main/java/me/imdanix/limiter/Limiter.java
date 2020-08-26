@@ -9,11 +9,11 @@ import java.util.UUID;
 
 public class Limiter {
     private final String world;
-    private final UUID currentId;
     private final FormulaEvaluator formula;
     private final int minimal;
     private final boolean above;
 
+    private UUID currentId;
     private int animal, ambient, monster, waterAnimal, waterAmbient;
 
     public Limiter(String worldName, ConfigurationSection cfg) {
@@ -26,7 +26,6 @@ public class Limiter {
             throw new IllegalStateException("World " + worldName + " is not found.");
         }
         this.world = worldName;
-        this.currentId = world.getUID();
         reloadInitials(world);
     }
 
@@ -57,6 +56,7 @@ public class Limiter {
     }
 
     private void reloadInitials(World world) {
+        this.currentId = world.getUID();
         this.animal = world.getAnimalSpawnLimit();
         this.ambient = world.getAmbientSpawnLimit();
         this.monster = world.getMonsterSpawnLimit();

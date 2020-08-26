@@ -33,7 +33,7 @@ public final class DynamicLimiter extends JavaPlugin {
         List<String> failed = new ArrayList<>();
         reloadLimiters(cfg.getConfigurationSection("worlds").getKeys(false), (w,e)-> failed.add(w));
         if(!failed.isEmpty()) {
-            warn("Worlds " + String.join(", ", failed) + " cannot be found. Will try again after full server load");
+            warn("Worlds " + String.join(", ", failed) + " cannot be found. Will try again after full server load.");
             Bukkit.getScheduler().runTask(this, () -> reloadLimiters(failed, (w, e) -> warn(e.getMessage())));
         }
 
@@ -54,7 +54,7 @@ public final class DynamicLimiter extends JavaPlugin {
                 if(sender instanceof Player) {
                     worldName = ((Player) sender).getWorld().getName();
                 } else {
-                    sender.sendMessage(clr("&cYou can't use this command from the console without world argument!"));
+                    sender.sendMessage(clr("&cYou can't use this command from the console without the &eworld&c argument!"));
                     return true;
                 }
             } else {
@@ -62,7 +62,7 @@ public final class DynamicLimiter extends JavaPlugin {
             }
             World world = Bukkit.getWorld(worldName);
             if(world == null) {
-                sender.sendMessage(clr("&cThere's no world called " + worldName + "!"));
+                sender.sendMessage(clr("&cThere's no world called &e" + worldName + "&c!"));
                 return true;
             }
             sender.sendMessage("Animal: " + world.getAnimalSpawnLimit());
